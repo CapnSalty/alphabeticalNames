@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
 
 namespace alphabeticalName
 {
@@ -7,9 +9,9 @@ namespace alphabeticalName
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter the number of students: ")
+            Console.WriteLine("Please enter the number of students: ");
             string[] studentNames = new string[int.Parse(Console.ReadLine())];
-            
+
 
             Console.WriteLine("\nEnter in the name of the students: ");
 
