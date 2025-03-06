@@ -9,28 +9,58 @@ namespace alphabeticalName
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter the number of students: ");
-            string[] studentNames = new string[int.Parse(Console.ReadLine())];
+            bool isRunning = true;
 
-
-            Console.WriteLine("\nEnter in the name of the students: ");
-
-            for (int i = 0; i < studentNames.Length; i++)
+            while (isRunning)
             {
-                studentNames[i] = Console.ReadLine();
+                int studentCount = GetNumberFromUser("Please enter the number of students:");
+
+                Console.WriteLine("\nEnter in the name of the students: ");
+
+                string[] studentNames = new string[studentCount];
+                for (int i = 0; i < studentNames.Length; i++)
+                {
+                    studentNames[i] = GetStringFromUser($"Student {i + 1}'s name:");
+                }
+
+                Console.WriteLine("\nHere they are aphabetically: ");
+
+                Array.Sort(studentNames);
+
+                for (int i = 0; i < studentNames.Length; i++)
+                {
+                    Console.WriteLine(studentNames[i]);
+                }
+
+                // Determine if the user wants to re-run this program or exit.
+
             }
+        }
 
-            Console.WriteLine("\nHere they are aphabetically: ");
-
-            Array.Sort(studentNames);
-
-            for (int i = 0; i < studentNames.Length; i++)
+        //Function for Checking # from user.
+        static int GetNumberFromUser(string message)
+        {
+            int result = 0;
+            bool isValid = false;
+            while (!isValid)
             {
-                Console.WriteLine(studentNames[i]);
+                Console.WriteLine(message);
+                isValid = int.TryParse(Console.ReadLine(), out result);
             }
-
-            //Wait before closing
-            Console.ReadKey();
+            return result;
+        }
+        //Function for string/character input.
+        static string GetStringFromUser(string message)
+        {
+            string result = "";
+            bool isValid = false;
+            while (!isValid)
+            {
+                Console.WriteLine(message);
+                result = Console.ReadLine() ?? "";
+                isValid = result.Length > 0;
+            }
+            return result;
         }
     }
 }
