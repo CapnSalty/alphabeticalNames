@@ -32,7 +32,8 @@ namespace alphabeticalName
                     Console.WriteLine(studentNames[i]);
                 }
 
-                // Determine if the user wants to re-run this program or exit.
+                Console.ReadKey();
+                break; //Exit program
 
             }
         }
